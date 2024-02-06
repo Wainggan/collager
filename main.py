@@ -5,11 +5,19 @@ import os, sys
 
 formatFileDir = ""
 
+resolution = (400, 400)
+
 if len(sys.argv) < 2:
 	print("input format file")
 	formatFileDir = input()
-else:
+elif len(sys.argv) == 3:
 	formatFileDir = sys.argv[1]
+	resolution = (int(sys.argv[2]), int(sys.argv[2]))
+elif len(sys.argv) == 4:
+	formatFileDir = sys.argv[1]
+	resolution = (int(sys.argv[2]), int(sys.argv[3]))
+
+print(sys.argv[1])
 
 if not os.path.exists(formatFileDir):
 	print(f"!! file \"{formatFileDir}\" does not exist")
@@ -19,7 +27,7 @@ if not os.path.exists(formatFileDir):
 imageList = []
 formatArr = []
 cellSize = (0, 0)
-resolution = (2200, 2000)
+
 formatPadding = 2
 
 # ~~ parse format file ~~
